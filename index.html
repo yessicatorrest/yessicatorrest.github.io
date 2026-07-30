@@ -1,644 +1,1736 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yessica Torres — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy:   #1B2B4B;
-    --gold:   #B8860B;
-    --gold-light: #F5E6C0;
-    --ink:    #2D3748;
-    --mist:   #F7F8FA;
-    --border: #E2E8F0;
-    --mid:    #64748B;
-    --white:  #FFFFFF;
-    --accent: #EEF2F7;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Yessica Torres, featuring product, analytics, automation and operations projects developed at TUM and Celonis.">
+  <meta name="theme-color" content="#1B2B4B">
+  <title>Yessica Torres | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B2B4B;
+      --navy-2: #24395F;
+      --gold: #B8860B;
+      --gold-soft: #F7EBCB;
+      --ink: #263247;
+      --mid: #68758A;
+      --mist: #F6F7F9;
+      --mist-2: #EDF1F6;
+      --border: #DDE3EB;
+      --white: #FFFFFF;
+      --shadow: 0 24px 70px rgba(27, 43, 75, 0.10);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--ink);
-    background: var(--white);
-    line-height: 1.6;
-  }
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    height: 60px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--navy);
-    letter-spacing: -0.3px;
-  }
-  .nav-links { display: flex; gap: 36px; }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--mid);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--navy); }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 82% 10%, rgba(184, 134, 11, 0.08), transparent 28rem),
+        radial-gradient(circle at 4% 36%, rgba(27, 43, 75, 0.05), transparent 26rem);
+    }
 
-  /* ── HERO ── */
-  .hero {
-    padding: 140px 48px 80px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(48px, 7vw, 80px);
-    color: var(--navy);
-    line-height: 1.05;
-    letter-spacing: -1.5px;
-    margin-bottom: 28px;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .hero-desc {
-    font-size: 18px;
-    color: var(--mid);
-    max-width: 600px;
-    line-height: 1.75;
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-  .hero-tags {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    margin-bottom: 40px;
-  }
-  .tag {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    color: var(--mid);
-    background: var(--mist);
-    letter-spacing: 0.02em;
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--navy);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 6px;
-    transition: background .2s, transform .15s;
-  }
-  .hero-cta:hover { background: #253d6e; transform: translateY(-1px); }
+    a { color: inherit; }
+    button { font: inherit; }
+    img, video { max-width: 100%; }
 
-  /* ── DIVIDER ── */
-  .rule {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0 48px;
-  }
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
 
-  /* ── SECTION WRAPPER ── */
-  .section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 48px;
-  }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 48px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .about-text p {
-    font-size: 16px;
-    color: var(--mid);
-    line-height: 1.8;
-    margin-bottom: 16px;
-    font-weight: 300;
-  }
-  .about-text p strong {
-    color: var(--navy);
-    font-weight: 500;
-  }
-  .skill-block { margin-bottom: 28px; }
-  .skill-block-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .skill-pill {
-    font-size: 12px;
-    padding: 4px 12px;
-    background: var(--accent);
-    color: var(--navy);
-    border-radius: 4px;
-    font-weight: 400;
-  }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
 
-  /* ── PROJECTS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .project-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px;
-    background: var(--white);
-    transition: box-shadow .2s, transform .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--gold);
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  .project-card:hover {
-    box-shadow: 0 8px 32px rgba(27,43,75,.08);
-    transform: translateY(-2px);
-  }
-  .project-card:hover::before { opacity: 1; }
-  .project-number {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-  .project-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--navy);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-  .project-context {
-    font-size: 12px;
-    color: var(--mid);
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-  .project-desc {
-    font-size: 14px;
-    color: var(--mid);
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-  .project-highlight {
-    background: var(--gold-light);
-    border-left: 3px solid var(--gold);
-    padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
-    font-size: 13px;
-    color: var(--navy);
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .project-tag {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: var(--mist);
-    color: var(--mid);
-    border: 1px solid var(--border);
-  }
+    .section-heading {
+      max-width: 760px;
+      margin-top: 16px;
+      color: var(--navy);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
 
-  /* ── EXPERIENCE TIMELINE ── */
-  .timeline { display: flex; flex-direction: column; gap: 0; }
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 32px;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .timeline-item:last-child { border-bottom: none; }
-  .timeline-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--mid);
-    padding-top: 4px;
-    line-height: 1.5;
-  }
-  .timeline-company {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-top: 4px;
-  }
-  .timeline-role {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--navy);
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-  .timeline-sub {
-    font-size: 13px;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 12px;
-  }
-  .timeline-desc {
-    font-size: 14px;
-    color: var(--mid);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-  .timeline-desc li {
-    margin-bottom: 6px;
-    padding-left: 12px;
-    position: relative;
-    list-style: none;
-  }
-  .timeline-desc li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-weight: 300;
-  }
+    .section-intro {
+      max-width: 720px;
+      margin-top: 20px;
+      color: var(--mid);
+      font-size: 17px;
+    }
 
-  /* ── CONTACT ── */
-  .contact-section {
-    background: var(--navy);
-    padding: 80px 48px;
-    text-align: center;
-  }
-  .contact-inner { max-width: 600px; margin: 0 auto; }
-  .contact-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-  }
-  .contact-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: 40px;
-    color: var(--white);
-    margin-bottom: 16px;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-  }
-  .contact-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 40px;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-  .contact-links {
-    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
-  }
-  .contact-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .contact-link-primary {
-    background: var(--gold);
-    color: var(--navy);
-  }
-  .contact-link-primary:hover { background: #d4a017; transform: translateY(-1px); }
-  .contact-link-secondary {
-    background: rgba(255,255,255,0.1);
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  .contact-link-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-1px); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 24px 48px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--mid);
-    border-top: 1px solid var(--border);
-  }
+    .button:hover { transform: translateY(-2px); }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 0 24px; }
-    .hero, .section { padding-left: 24px; padding-right: 24px; }
-    .rule { margin: 0 24px; }
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-    .contact-section { padding: 60px 24px; }
-    footer { padding: 24px; }
-  }
+    .button-primary {
+      color: var(--white);
+      background: var(--navy);
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
-  }
-</style>
+    .button-primary:hover { background: var(--navy-2); }
+
+    .button-secondary {
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.75);
+      border-color: var(--border);
+    }
+
+    .button-secondary:hover { border-color: var(--gold); }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .text-link span { transition: transform 180ms ease; }
+    .text-link:hover span { transform: translateX(4px); }
+
+    /* Navigation */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(221, 227, 235, 0.85);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--mid);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--navy); }
+
+    /* Hero */
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 132px 0 84px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      gap: 64px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      max-width: 870px;
+      margin-top: 22px;
+      color: var(--navy);
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 0.99;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 strong {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-top: 28px;
+      color: var(--mid);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(246, 247, 249, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -72px;
+      bottom: -84px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+    }
+
+    .panel-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .panel-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .panel-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 13px;
+      align-items: start;
+    }
+
+    .panel-number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: var(--navy);
+      background: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .panel-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .panel-item p {
+      margin-top: 3px;
+      color: var(--mid);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Evidence */
+    .evidence-section {
+      padding: 32px 0 108px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 46px;
+    }
+
+    .evidence-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--white);
+    }
+
+    .evidence-number {
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.12em;
+    }
+
+    .evidence-card h3 {
+      margin-top: 16px;
+      color: var(--navy);
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .evidence-card p {
+      margin-top: 9px;
+      color: var(--mid);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .capability-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 34px;
+    }
+
+    .capability {
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--mist);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Projects */
+    .projects-section {
+      padding: 104px 0 118px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .projects-section .eyebrow { color: #E3BC5C; }
+    .projects-section .section-heading { color: var(--white); }
+    .projects-section .section-intro { color: rgba(255, 255, 255, 0.67); }
+
+    .project-nav {
+      position: sticky;
+      top: 82px;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-top: 42px;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(20, 32, 57, 0.78);
+      backdrop-filter: blur(14px);
+      scrollbar-width: none;
+    }
+
+    .project-nav::-webkit-scrollbar { display: none; }
+
+    .project-nav a {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 160ms ease, background 160ms ease;
+    }
+
+    .project-nav a:hover,
+    .project-nav a.active {
+      color: var(--navy);
+      background: var(--gold-soft);
+    }
+
+    .case-study {
+      scroll-margin-top: 146px;
+      margin-top: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 28px;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 30px 80px rgba(5, 13, 28, 0.26);
+    }
+
+    .case-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(280px, 0.78fr);
+      gap: 50px;
+      padding: 54px 56px 42px;
+    }
+
+    .case-kicker {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .case-title {
+      margin-top: 14px;
+      color: var(--navy);
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    .case-summary {
+      margin-top: 20px;
+      color: var(--mid);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .case-facts {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: 26px;
+      border-radius: var(--radius-md);
+      background: var(--mist);
+    }
+
+    .fact {
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fact:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .fact-label {
+      color: var(--mid);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .fact-value {
+      margin-top: 4px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .media-stage {
+      padding: 0 56px 44px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+    }
+
+    .media-grid.equal { grid-template-columns: 1fr 1fr; }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--mist);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .browser-url {
+      overflow: hidden;
+      flex: 1;
+      margin-left: 6px;
+      color: var(--mid);
+      font-size: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .media-slot {
+      position: relative;
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(27, 43, 75, 0.035), rgba(184, 134, 11, 0.08)),
+        repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(27, 43, 75, 0.035) 30px);
+    }
+
+    .media-grid.equal .media-slot { min-height: 300px; }
+
+    .media-slot img,
+    .media-slot video {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--mist);
+    }
+
+    .media-slot video { object-fit: contain; }
+    .media-slot.has-media img,
+    .media-slot.has-media video { display: block; }
+
+    .media-fallback {
+      position: relative;
+      z-index: 1;
+      max-width: 280px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .media-fallback-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      color: var(--gold);
+      background: var(--gold-soft);
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .media-fallback strong {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .media-fallback span {
+      display: block;
+      margin-top: 6px;
+      color: var(--mid);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .media-fallback code {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      color: var(--navy);
+      background: var(--white);
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .media-slot.has-media .media-fallback { display: none; }
+
+    .media-caption {
+      padding: 12px 15px;
+      color: var(--mid);
+      background: var(--white);
+      font-size: 11px;
+    }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 44px;
+      padding: 48px 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .body-block h3 {
+      color: var(--navy);
+      font-size: 16px;
+    }
+
+    .body-block p,
+    .body-block li {
+      color: var(--mid);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .body-block p { margin-top: 10px; }
+
+    .body-block ul {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+      list-style: none;
+    }
+
+    .body-block li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .body-block li::before {
+      content: "";
+      position: absolute;
+      top: 0.75em;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .diagram-section {
+      padding: 48px 56px 56px;
+      border-top: 1px solid var(--border);
+      background: var(--mist);
+    }
+
+    .diagram-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .diagram-heading h3 {
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .diagram-heading p {
+      max-width: 620px;
+      color: var(--mid);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .diagram-shell {
+      overflow-x: auto;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--white);
+    }
+
+    .diagram-shell svg {
+      display: block;
+      min-width: 860px;
+      width: 100%;
+      height: auto;
+    }
+
+    .case-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--mid);
+      background: var(--mist);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Additional projects */
+    .additional-projects {
+      padding: 110px 0;
+    }
+
+    .small-project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 46px;
+    }
+
+    .small-project {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .small-project:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .small-visual {
+      min-height: 230px;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background: var(--mist);
+    }
+
+    .small-visual svg {
+      width: 100%;
+      max-height: 200px;
+    }
+
+    .small-copy { padding: 30px; }
+
+    .small-copy h3 {
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -0.025em;
+    }
+
+    .small-context {
+      margin-top: 5px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .small-copy p {
+      margin-top: 16px;
+      color: var(--mid);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .small-copy .tag-list { margin-top: 20px; }
+
+    /* Experience */
+    .experience-section {
+      padding: 110px 0;
+      border-top: 1px solid var(--border);
+      background: var(--mist);
+    }
+
+    .timeline {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 36px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-date {
+      color: var(--mid);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .timeline-company {
+      margin-top: 6px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .timeline-role {
+      color: var(--navy);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-copy {
+      margin-top: 8px;
+      color: var(--mid);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* Contact */
+    .contact-section {
+      padding: 112px 0;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+      padding: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .contact-card h2 {
+      max-width: 720px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .contact-card p {
+      max-width: 680px;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 210px;
+    }
+
+    .contact-actions .button-primary {
+      color: var(--navy);
+      background: var(--gold-soft);
+    }
+
+    .contact-actions .button-secondary {
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    footer {
+      padding: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+      color: rgba(255, 255, 255, 0.45);
+      background: var(--navy);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* Reveal */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .case-header,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { min-height: auto; }
+      .hero-panel { max-width: 560px; }
+      .case-facts { grid-template-columns: repeat(3, 1fr); }
+      .fact { padding: 0 14px 0 0; border-right: 1px solid var(--border); border-bottom: 0; }
+      .fact:last-child { border-right: 0; }
+      .contact-actions { flex-direction: row; min-width: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 1180px); }
+      .nav-links a:not(:last-child) { display: none; }
+      .hero { padding-top: 112px; }
+      .hero-grid { gap: 38px; }
+      .evidence-grid,
+      .small-project-grid,
+      .media-grid,
+      .media-grid.equal,
+      .project-body {
+        grid-template-columns: 1fr;
+      }
+      .case-header,
+      .media-stage,
+      .project-body,
+      .diagram-section,
+      .case-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .case-header { gap: 28px; padding-top: 34px; }
+      .case-facts { grid-template-columns: 1fr; }
+      .fact { padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--border); }
+      .diagram-heading { display: block; }
+      .diagram-heading p { margin-top: 8px; text-align: left; }
+      .case-footer { align-items: flex-start; flex-direction: column; }
+      .timeline-item { grid-template-columns: 1fr; gap: 10px; }
+      .contact-card { padding: 30px; }
+      .contact-actions { flex-direction: column; }
+      .media-slot,
+      .media-grid.equal .media-slot { min-height: 250px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Yessica Torres</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Munich, Germany · Open to work</div>
-  <h1 class="hero-name">Making data<br><em>reliable</em> and<br>defensible.</h1>
-  <p class="hero-desc">
-    MSc in Management &amp; Technology at TUM. Background in AI research, operational systems and financial compliance — different contexts, the same underlying interest.
-  </p>
-  <div class="hero-tags">
-    <span class="tag">Process Mining · Celonis</span>
-    <span class="tag">Python · NLP · ML</span>
-    <span class="tag">BizOps & Analytics</span>
-    <span class="tag">Data Quality</span>
-    <span class="tag">Agentic AI</span>
-    <span class="tag">BCG × TUM Research</span>
-  </div>
-  <a href="mailto:yessica.torres@tum.de" class="hero-cta">Get in touch →</a>
-</section>
-
-<hr class="rule">
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-label">About</div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I find the most interesting problems at the intersection of <strong>data, systems and real-world consequences</strong> — where the quality of the analysis actually matters.</p>
-      <p>My path has moved between financial compliance in Venezuela, talent operations and process analytics at Celonis, and AI research at TUM in collaboration with the BCG × TUM cluster. Different contexts, same instinct: <strong>make the data trustworthy before drawing conclusions from it.</strong></p>
-      <p>I am finishing my MSc at TUM and looking for a full-time role in Munich in BizOps, analytics, or AI implementation — ideally somewhere where rigorous, defensible work is the standard.</p>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Yessica Torres</a>
+      <div class="nav-links">
+        <a href="#approach">How I work</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-    <div class="about-skills">
-      <div class="skill-block">
-        <div class="skill-block-label">Technical</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Pandas · NumPy</span>
-          <span class="skill-pill">Scikit-learn</span>
-          <span class="skill-pill">NLP</span>
-          <span class="skill-pill">Process Mining</span>
-          <span class="skill-pill">Celonis</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">R (basic)</span>
-          <span class="skill-pill">Tableau</span>
-          <span class="skill-pill">Power BI</span>
-          <span class="skill-pill">Salesforce</span>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">Product · Analytics · Operations</div>
+          <h1>Yessica Torres</h1>
+          <p class="hero-copy">
+            MSc Management &amp; Technology student at TUM, with experience across product development, analytics and operations. This portfolio presents the research, decisions and systems behind selected projects.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore the projects <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="https://github.com/yessicatorrest" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" data-reveal aria-label="Portfolio overview">
+          <div class="panel-label">What you will find here</div>
+          <div class="panel-list">
+            <div class="panel-item">
+              <div class="panel-number">01</div>
+              <div>
+                <strong>Research translated into a system</strong>
+                <p>A firm-level AI maturity pipeline built across five incompatible data sources.</p>
+              </div>
+            </div>
+            <div class="panel-item">
+              <div class="panel-number">02</div>
+              <div>
+                <strong>A prototype that works end to end</strong>
+                <p>Skillovna takes a user from assessment to a personalised results dashboard.</p>
+              </div>
+            </div>
+            <div class="panel-item">
+              <div class="panel-number">03</div>
+              <div>
+                <strong>A two-sided product problem</strong>
+                <p>Nexus was designed around both student and supervisor constraints.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="evidence-section" id="approach">
+      <div class="container">
+        <div class="eyebrow">A pattern across the work</div>
+        <h2 class="section-heading">Different projects, a similar way of working.</h2>
+        <p class="section-intro">
+          Whether the work begins with an operational issue, a product idea or a research question, I tend to focus on three things.
+        </p>
+
+        <div class="evidence-grid">
+          <article class="evidence-card" data-reveal>
+            <div class="evidence-number">01</div>
+            <h3>Get close to the actual problem</h3>
+            <p>I use interviews, user feedback and process data to understand what is happening before deciding what needs to change.</p>
+          </article>
+          <article class="evidence-card" data-reveal>
+            <div class="evidence-number">02</div>
+            <h3>Bring structure to the moving parts</h3>
+            <p>I map systems, dependencies, data flows and ownership so that complex work becomes understandable and actionable.</p>
+          </article>
+          <article class="evidence-card" data-reveal>
+            <div class="evidence-number">03</div>
+            <h3>Carry the work into practice</h3>
+            <p>I build and test prototypes, dashboards, workflows or models rather than stopping once the recommendation is written.</p>
+          </article>
+        </div>
+
+        <div class="capability-row" aria-label="Skills and tools">
+          <span class="capability">Python</span>
+          <span class="capability">Pandas</span>
+          <span class="capability">Scikit-learn</span>
+          <span class="capability">NLP</span>
+          <span class="capability">XGBoost</span>
+          <span class="capability">Process Mining</span>
+          <span class="capability">UX research</span>
+          <span class="capability">Low-code / no-code tools</span>
+          <span class="capability">Automation</span>
+          <span class="capability">Make</span>
+          <span class="capability">Zapier</span>
+          <span class="capability">Zoho Forms</span>
+          <span class="capability">Airtable</span>
+          <span class="capability">CRM systems</span>
+          <span class="capability">Salesforce</span>
+          <span class="capability">LMS administration</span>
+          <span class="capability">Excel proficiency</span>
+          <span class="capability">Celonis</span>
+          <span class="capability">Figma</span>
+          <span class="capability">Jira</span>
+          <span class="capability">Confluence</span>
         </div>
       </div>
-      <div class="skill-block">
-        <div class="skill-block-label">Operations & Strategy</div>
-        <div class="skill-pills">
-          <span class="skill-pill">KPI Frameworks</span>
-          <span class="skill-pill">Data Quality</span>
-          <span class="skill-pill">Process Optimisation</span>
-          <span class="skill-pill">Cross-functional Coordination</span>
-          <span class="skill-pill">Vendor Management</span>
-          <span class="skill-pill">Agentic AI Workflows</span>
+    </section>
+
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="eyebrow">Selected projects</div>
+        <h2 class="section-heading">The decisions, systems and evidence behind the final result.</h2>
+        <nav class="project-nav" aria-label="Project navigation">
+          <a href="#skillovna">Skillovna</a>
+          <a href="#nexus">Nexus</a>
+          <a href="#thesis">AI Maturity Index</a>
+          <a href="#additional">More projects</a>
+        </nav>
+
+        <article class="case-study" id="skillovna" data-project>
+          <header class="case-header">
+            <div>
+              <div class="case-kicker">01 · AI prototyping and entrepreneurship</div>
+              <h3 class="case-title">Skillovna</h3>
+              <p class="case-summary">
+                A working EdTech MVP for SMEs that turns a skill assessment into structured, personalised results. I led the SME problem framing, made product decisions on what to include or cut, and co-built the automation that connects the full user journey.
+              </p>
+            </div>
+            <div class="case-facts">
+              <div class="fact">
+                <div class="fact-label">Context</div>
+                <div class="fact-value">TUM AI Prototyping Course, team of 2</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">My contribution</div>
+                <div class="fact-value">Problem definition, product scope, user testing and technical build</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Evidence</div>
+                <div class="fact-value">20+ interviews, 2 surveys and 3 prototype iterations</div>
+              </div>
+            </div>
+          </header>
+
+          <div class="media-stage">
+            <div class="media-grid">
+              <figure class="media-card">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">skillovna landing page</span>
+                </div>
+                <div class="media-slot">
+                  <img src="assets/skillovna-landing.png" alt="Skillovna landing page" onload="this.parentElement.classList.add('has-media')" onerror="this.remove()">
+                  <div class="media-fallback">
+                    <div class="media-fallback-icon">▣</div>
+                    <strong>Landing page screenshot</strong>
+                    <span>Add the final browser screenshot to the assets folder.</span>
+                    <code>assets/skillovna-landing.png</code>
+                  </div>
+                </div>
+                <figcaption class="media-caption">The assessment entry point and first product promise.</figcaption>
+              </figure>
+
+              <figure class="media-card">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">prototype walkthrough</span>
+                </div>
+                <div class="media-slot">
+                  <video controls playsinline preload="metadata" poster="assets/skillovna-demo-poster.jpg" onloadeddata="this.parentElement.classList.add('has-media')" onerror="this.remove()">
+                    <source src="assets/skillovna-demo.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-fallback">
+                    <div class="media-fallback-icon">▶</div>
+                    <strong>Prototype video</strong>
+                    <span>A short walkthrough works best here, around 30 to 60 seconds.</span>
+                    <code>assets/skillovna-demo.mp4</code>
+                  </div>
+                </div>
+                <figcaption class="media-caption">Assessment submission, processing and results.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="body-block">
+              <h3>Why this was worth building</h3>
+              <p>Small companies often have limited L&amp;D capacity, while employees are left to find and evaluate training on their own. The team tested that problem before building and narrowed the product to one useful first step: identifying skill gaps and returning a structured starting point.</p>
+            </div>
+            <div class="body-block">
+              <h3>What changed through testing</h3>
+              <ul>
+                <li>The landing page went through three rounds of revision based on user feedback.</li>
+                <li>The feature set was reduced to keep the first user journey clear and testable.</li>
+                <li>Pitch feedback exposed an overstated market size and an unclear pricing structure, which informed the next iteration.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="diagram-section">
+            <div class="diagram-heading">
+              <h3>Automation pipeline</h3>
+              <p>One continuous flow takes the user from an embedded assessment to a structured results dashboard.</p>
+            </div>
+            <div class="diagram-shell">
+              <svg viewBox="0 0 1120 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skillovna automation pipeline">
+                <defs>
+                  <marker id="skillArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#B8860B"/>
+                  </marker>
+                  <filter id="skillShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1B2B4B" flood-opacity="0.10"/>
+                  </filter>
+                </defs>
+
+                <g font-family="DM Sans, sans-serif">
+                  <g filter="url(#skillShadow)">
+                    <rect x="20" y="58" width="150" height="92" rx="14" fill="#1B2B4B"/>
+                    <circle cx="95" cy="78" r="18" fill="#F7EBCB"/>
+                    <text x="95" y="83" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">1</text>
+                    <text x="95" y="115" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">Tally</text>
+                    <text x="95" y="134" text-anchor="middle" fill="#C9D2E0" font-size="11">skill assessment</text>
+                  </g>
+                  <line x1="170" y1="104" x2="202" y2="104" stroke="#B8860B" stroke-width="3" marker-end="url(#skillArrow)"/>
+
+                  <g filter="url(#skillShadow)">
+                    <rect x="208" y="58" width="150" height="92" rx="14" fill="#1B2B4B"/>
+                    <circle cx="283" cy="78" r="18" fill="#F7EBCB"/>
+                    <text x="283" y="83" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">2</text>
+                    <text x="283" y="115" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">Airtable</text>
+                    <text x="283" y="134" text-anchor="middle" fill="#C9D2E0" font-size="11">response storage</text>
+                  </g>
+                  <line x1="358" y1="104" x2="390" y2="104" stroke="#B8860B" stroke-width="3" marker-end="url(#skillArrow)"/>
+
+                  <g filter="url(#skillShadow)">
+                    <rect x="396" y="58" width="150" height="92" rx="14" fill="#1B2B4B"/>
+                    <circle cx="471" cy="78" r="18" fill="#F7EBCB"/>
+                    <text x="471" y="83" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">3</text>
+                    <text x="471" y="115" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">Make</text>
+                    <text x="471" y="134" text-anchor="middle" fill="#C9D2E0" font-size="11">workflow trigger</text>
+                  </g>
+                  <line x1="546" y1="104" x2="578" y2="104" stroke="#B8860B" stroke-width="3" marker-end="url(#skillArrow)"/>
+
+                  <g filter="url(#skillShadow)">
+                    <rect x="584" y="58" width="150" height="92" rx="14" fill="#1B2B4B"/>
+                    <circle cx="659" cy="78" r="18" fill="#F7EBCB"/>
+                    <text x="659" y="83" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">4</text>
+                    <text x="659" y="115" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">ChatGPT</text>
+                    <text x="659" y="134" text-anchor="middle" fill="#C9D2E0" font-size="11">skill scoring logic</text>
+                  </g>
+                  <line x1="734" y1="104" x2="766" y2="104" stroke="#B8860B" stroke-width="3" marker-end="url(#skillArrow)"/>
+
+                  <g filter="url(#skillShadow)">
+                    <rect x="772" y="58" width="150" height="92" rx="14" fill="#1B2B4B"/>
+                    <circle cx="847" cy="78" r="18" fill="#F7EBCB"/>
+                    <text x="847" y="83" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">5</text>
+                    <text x="847" y="115" text-anchor="middle" fill="#FFFFFF" font-size="15" font-weight="700">JSON Parse</text>
+                    <text x="847" y="134" text-anchor="middle" fill="#C9D2E0" font-size="11">structured output</text>
+                  </g>
+                  <line x1="922" y1="104" x2="954" y2="104" stroke="#B8860B" stroke-width="3" marker-end="url(#skillArrow)"/>
+
+                  <g filter="url(#skillShadow)">
+                    <rect x="960" y="45" width="140" height="118" rx="16" fill="#F7EBCB" stroke="#B8860B" stroke-width="2"/>
+                    <circle cx="1030" cy="70" r="18" fill="#B8860B"/>
+                    <text x="1030" y="75" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">6</text>
+                    <text x="1030" y="112" text-anchor="middle" fill="#1B2B4B" font-size="15" font-weight="800">Results</text>
+                    <text x="1030" y="132" text-anchor="middle" fill="#1B2B4B" font-size="13" font-weight="700">dashboard</text>
+                    <text x="1030" y="148" text-anchor="middle" fill="#68758A" font-size="10">scores and paths</text>
+                  </g>
+
+                  <text x="20" y="204" fill="#68758A" font-size="12">The model returns defined fields for seven skill categories, so the dashboard can render a consistent result rather than free-form text.</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <footer class="case-footer">
+            <div class="tag-list">
+              <span class="tag">Product decisions</span>
+              <span class="tag">No-code automation</span>
+              <span class="tag">Make</span>
+              <span class="tag">Airtable</span>
+              <span class="tag">User research</span>
+              <span class="tag">EdTech</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="case-study" id="nexus" data-project>
+          <header class="case-header">
+            <div>
+              <div class="case-kicker">02 · Product design</div>
+              <h3 class="case-title">Nexus</h3>
+              <p class="case-summary">
+                A two-sided platform for students searching for a thesis and supervisors managing applications. As Product Manager in a five-person team, I defined product requirements, structured the business model and helped translate research into the Figma prototype.
+              </p>
+            </div>
+            <div class="case-facts">
+              <div class="fact">
+                <div class="fact-label">Context</div>
+                <div class="fact-value">TUM Product Design Course, cross-functional team of 5</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">My contribution</div>
+                <div class="fact-value">Product strategy, requirements, business model and stakeholder validation</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Problem signal</div>
+                <div class="fact-value">8+ hours spent searching, with 90% of students dissatisfied</div>
+              </div>
+            </div>
+          </header>
+
+          <div class="media-stage">
+            <div class="media-grid equal">
+              <figure class="media-card">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">student dashboard</span>
+                </div>
+                <div class="media-slot">
+                  <img src="assets/nexus-student-dashboard.png" alt="Nexus student dashboard from the Figma prototype" onload="this.parentElement.classList.add('has-media')" onerror="this.remove()">
+                  <div class="media-fallback">
+                    <div class="media-fallback-icon">S</div>
+                    <strong>Student view</strong>
+                    <span>Add the dashboard or top-picks screen from Figma.</span>
+                    <code>assets/nexus-student-dashboard.png</code>
+                  </div>
+                </div>
+                <figcaption class="media-caption">Search, recommendations and application tracking.</figcaption>
+              </figure>
+
+              <figure class="media-card">
+                <div class="browser-bar">
+                  <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                  <span class="browser-url">supervisor dashboard</span>
+                </div>
+                <div class="media-slot">
+                  <img src="assets/nexus-supervisor-dashboard.png" alt="Nexus supervisor dashboard from the Figma prototype" onload="this.parentElement.classList.add('has-media')" onerror="this.remove()">
+                  <div class="media-fallback">
+                    <div class="media-fallback-icon">P</div>
+                    <strong>Supervisor view</strong>
+                    <span>Add the applicant management or thesis posting screen from Figma.</span>
+                    <code>assets/nexus-supervisor-dashboard.png</code>
+                  </div>
+                </div>
+                <figcaption class="media-caption">Postings, candidate review and thesis management.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="body-block">
+              <h3>One platform, two different constraints</h3>
+              <p>Students struggled to find suitable topics and track applications. Supervisors faced high demand, limited capacity and many applicants who did not meet the listed prerequisites. Treating only one side would have moved the bottleneck rather than removing it.</p>
+            </div>
+            <div class="body-block">
+              <h3>What the product had to support</h3>
+              <ul>
+                <li>Students need relevant topic discovery, clearer requirements and application status.</li>
+                <li>Supervisors need structured postings, candidate filtering and a manageable review queue.</li>
+                <li>The university needs visibility into demand and supervision capacity across chairs.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="diagram-section">
+            <div class="diagram-heading">
+              <h3>Two-sided platform concept</h3>
+              <p>Nexus does not simply list topics. It coordinates matching, applications and progress across both sides of the thesis process.</p>
+            </div>
+            <div class="diagram-shell">
+              <svg viewBox="0 0 1040 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nexus two-sided platform concept">
+                <defs>
+                  <marker id="nexusArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#B8860B"/>
+                  </marker>
+                  <filter id="nexusShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#1B2B4B" flood-opacity="0.11"/>
+                  </filter>
+                </defs>
+                <g font-family="DM Sans, sans-serif">
+                  <g filter="url(#nexusShadow)">
+                    <rect x="30" y="90" width="250" height="180" rx="22" fill="#1B2B4B"/>
+                    <circle cx="155" cy="130" r="26" fill="#F7EBCB"/>
+                    <text x="155" y="138" text-anchor="middle" fill="#1B2B4B" font-size="20" font-weight="800">S</text>
+                    <text x="155" y="180" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="800">Students</text>
+                    <text x="155" y="213" text-anchor="middle" fill="#C9D2E0" font-size="13">Search relevant topics</text>
+                    <text x="155" y="235" text-anchor="middle" fill="#C9D2E0" font-size="13">Apply once, track clearly</text>
+                  </g>
+
+                  <g filter="url(#nexusShadow)">
+                    <rect x="395" y="54" width="250" height="252" rx="24" fill="#F7EBCB" stroke="#B8860B" stroke-width="2"/>
+                    <circle cx="520" cy="105" r="30" fill="#B8860B"/>
+                    <text x="520" y="113" text-anchor="middle" fill="#FFFFFF" font-size="20" font-weight="800">N</text>
+                    <text x="520" y="166" text-anchor="middle" fill="#1B2B4B" font-size="26" font-weight="800">Nexus</text>
+                    <text x="520" y="197" text-anchor="middle" fill="#68758A" font-size="13">Matching and workflow layer</text>
+                    <rect x="440" y="225" width="160" height="38" rx="19" fill="#FFFFFF" stroke="#DDE3EB"/>
+                    <text x="520" y="249" text-anchor="middle" fill="#1B2B4B" font-size="12" font-weight="700">Requirements + status</text>
+                  </g>
+
+                  <g filter="url(#nexusShadow)">
+                    <rect x="760" y="90" width="250" height="180" rx="22" fill="#1B2B4B"/>
+                    <circle cx="885" cy="130" r="26" fill="#F7EBCB"/>
+                    <text x="885" y="138" text-anchor="middle" fill="#1B2B4B" font-size="20" font-weight="800">P</text>
+                    <text x="885" y="180" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="800">Supervisors</text>
+                    <text x="885" y="213" text-anchor="middle" fill="#C9D2E0" font-size="13">Post topics and criteria</text>
+                    <text x="885" y="235" text-anchor="middle" fill="#C9D2E0" font-size="13">Review a structured queue</text>
+                  </g>
+
+                  <path d="M280 152 C330 115, 350 115, 393 150" fill="none" stroke="#B8860B" stroke-width="3" marker-end="url(#nexusArrow)"/>
+                  <path d="M395 236 C350 272, 330 272, 282 235" fill="none" stroke="#B8860B" stroke-width="3" marker-end="url(#nexusArrow)"/>
+                  <path d="M645 150 C690 115, 710 115, 758 152" fill="none" stroke="#B8860B" stroke-width="3" marker-end="url(#nexusArrow)"/>
+                  <path d="M760 235 C710 272, 690 272, 647 236" fill="none" stroke="#B8860B" stroke-width="3" marker-end="url(#nexusArrow)"/>
+
+                  <text x="337" y="104" text-anchor="middle" fill="#68758A" font-size="11">preferences and applications</text>
+                  <text x="337" y="307" text-anchor="middle" fill="#68758A" font-size="11">recommendations and updates</text>
+                  <text x="703" y="104" text-anchor="middle" fill="#68758A" font-size="11">topics and prerequisites</text>
+                  <text x="703" y="307" text-anchor="middle" fill="#68758A" font-size="11">qualified candidates and status</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <footer class="case-footer">
+            <div class="tag-list">
+              <span class="tag">Product Management</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Two-sided platform</span>
+              <span class="tag">User research</span>
+              <span class="tag">Business model</span>
+              <span class="tag">Stakeholder validation</span>
+            </div>
+          </footer>
+        </article>
+
+        <article class="case-study" id="thesis" data-project>
+          <header class="case-header">
+            <div>
+              <div class="case-kicker">03 · Master's thesis</div>
+              <h3 class="case-title">AI Maturity Index</h3>
+              <p class="case-summary">
+                A transparent firm-level AI maturity measure built from corporate disclosures, patents, executive appointments, board composition and acquisition activity. The research covered 1,539 large firms from 2015 to 2024.
+              </p>
+            </div>
+            <div class="case-facts">
+              <div class="fact">
+                <div class="fact-label">Context</div>
+                <div class="fact-value">TUM Chair of Strategy and Organisation, BCG × TUM research cluster</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Core work</div>
+                <div class="fact-value">Data reconciliation, NLP features, predictive modelling and validation</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Scale</div>
+                <div class="fact-value">1,539 firms across a ten-year observation window</div>
+              </div>
+            </div>
+          </header>
+
+          <div class="media-stage">
+            <figure class="media-card">
+              <div class="browser-bar">
+                <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                <span class="browser-url">yessicatorrest.github.io/thesis-results</span>
+              </div>
+              <div class="media-slot">
+                <img src="assets/thesis-results-app.png" alt="Interactive AI maturity results application" onload="this.parentElement.classList.add('has-media')" onerror="this.remove()">
+                <div class="media-fallback">
+                  <div class="media-fallback-icon">↗</div>
+                  <strong>Interactive results application</strong>
+                  <span>Add a screenshot once the separate React app is ready. The button below already points to the planned URL.</span>
+                  <code>assets/thesis-results-app.png</code>
+                </div>
+              </div>
+              <figcaption class="media-caption">The separate React app will make rankings, trends and feature contributions explorable.</figcaption>
+            </figure>
+          </div>
+
+          <div class="project-body">
+            <div class="body-block">
+              <h3>The methodological problem came first</h3>
+              <p>Each source used a different company identifier. Before constructing features, I had to build a consistent firm panel and resolve naming variation, subsidiaries and unmatched records. That reconciliation step determined whether the later model could be trusted.</p>
+            </div>
+            <div class="body-block">
+              <h3>What the final analysis included</h3>
+              <ul>
+                <li>NLP features derived from corporate disclosure language.</li>
+                <li>Structured indicators from patents, leadership, boards and acquisitions.</li>
+                <li>Gradient-boosted trees for score construction and SHAP for feature attribution.</li>
+                <li>External validation against existing proprietary benchmarks.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="diagram-section">
+            <div class="diagram-heading">
+              <h3>Research data pipeline</h3>
+              <p>The diagram keeps the full process visible, from incompatible raw sources to an interpretable firm score.</p>
+            </div>
+            <div class="diagram-shell">
+              <svg viewBox="0 0 1160 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI maturity index data pipeline">
+                <defs>
+                  <marker id="thesisArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="#B8860B"/>
+                  </marker>
+                  <filter id="thesisShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1B2B4B" flood-opacity="0.10"/>
+                  </filter>
+                </defs>
+                <g font-family="DM Sans, sans-serif">
+                  <g filter="url(#thesisShadow)">
+                    <rect x="20" y="36" width="230" height="238" rx="20" fill="#F6F7F9" stroke="#DDE3EB"/>
+                    <text x="42" y="67" fill="#1B2B4B" font-size="15" font-weight="800">Five raw data systems</text>
+                    <g fill="#FFFFFF" stroke="#DDE3EB">
+                      <rect x="42" y="88" width="186" height="29" rx="7"/>
+                      <rect x="42" y="126" width="186" height="29" rx="7"/>
+                      <rect x="42" y="164" width="186" height="29" rx="7"/>
+                      <rect x="42" y="202" width="186" height="29" rx="7"/>
+                      <rect x="42" y="240" width="186" height="29" rx="7"/>
+                    </g>
+                    <g fill="#68758A" font-size="11" font-weight="700">
+                      <text x="56" y="107">Corporate disclosures</text>
+                      <text x="56" y="145">Patent records</text>
+                      <text x="56" y="183">Executive appointments</text>
+                      <text x="56" y="221">Board composition</text>
+                      <text x="56" y="259">Acquisition activity</text>
+                    </g>
+                  </g>
+
+                  <line x1="250" y1="155" x2="292" y2="155" stroke="#B8860B" stroke-width="3" marker-end="url(#thesisArrow)"/>
+
+                  <g filter="url(#thesisShadow)">
+                    <rect x="300" y="82" width="190" height="146" rx="18" fill="#1B2B4B"/>
+                    <circle cx="395" cy="117" r="22" fill="#F7EBCB"/>
+                    <text x="395" y="123" text-anchor="middle" fill="#1B2B4B" font-size="15" font-weight="800">1</text>
+                    <text x="395" y="161" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="800">Entity resolution</text>
+                    <text x="395" y="187" text-anchor="middle" fill="#C9D2E0" font-size="11">rules + fuzzy matching</text>
+                    <text x="395" y="205" text-anchor="middle" fill="#C9D2E0" font-size="11">manual validation</text>
+                  </g>
+
+                  <line x1="490" y1="155" x2="532" y2="155" stroke="#B8860B" stroke-width="3" marker-end="url(#thesisArrow)"/>
+
+                  <g filter="url(#thesisShadow)">
+                    <rect x="540" y="82" width="190" height="146" rx="18" fill="#1B2B4B"/>
+                    <circle cx="635" cy="117" r="22" fill="#F7EBCB"/>
+                    <text x="635" y="123" text-anchor="middle" fill="#1B2B4B" font-size="15" font-weight="800">2</text>
+                    <text x="635" y="161" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="800">Feature building</text>
+                    <text x="635" y="187" text-anchor="middle" fill="#C9D2E0" font-size="11">NLP + structured indicators</text>
+                    <text x="635" y="205" text-anchor="middle" fill="#C9D2E0" font-size="11">firm-year panel</text>
+                  </g>
+
+                  <line x1="730" y1="155" x2="772" y2="155" stroke="#B8860B" stroke-width="3" marker-end="url(#thesisArrow)"/>
+
+                  <g filter="url(#thesisShadow)">
+                    <rect x="780" y="82" width="190" height="146" rx="18" fill="#1B2B4B"/>
+                    <circle cx="875" cy="117" r="22" fill="#F7EBCB"/>
+                    <text x="875" y="123" text-anchor="middle" fill="#1B2B4B" font-size="15" font-weight="800">3</text>
+                    <text x="875" y="161" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="800">XGBoost model</text>
+                    <text x="875" y="187" text-anchor="middle" fill="#C9D2E0" font-size="11">score construction</text>
+                    <text x="875" y="205" text-anchor="middle" fill="#C9D2E0" font-size="11">SHAP attribution</text>
+                  </g>
+
+                  <line x1="970" y1="155" x2="1012" y2="155" stroke="#B8860B" stroke-width="3" marker-end="url(#thesisArrow)"/>
+
+                  <g filter="url(#thesisShadow)">
+                    <rect x="1020" y="68" width="120" height="174" rx="20" fill="#F7EBCB" stroke="#B8860B" stroke-width="2"/>
+                    <circle cx="1080" cy="108" r="24" fill="#B8860B"/>
+                    <text x="1080" y="115" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="800">4</text>
+                    <text x="1080" y="155" text-anchor="middle" fill="#1B2B4B" font-size="16" font-weight="800">AI maturity</text>
+                    <text x="1080" y="177" text-anchor="middle" fill="#1B2B4B" font-size="16" font-weight="800">score</text>
+                    <text x="1080" y="208" text-anchor="middle" fill="#68758A" font-size="10">firm and year</text>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <footer class="case-footer">
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">NLP</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">SHAP</span>
+              <span class="tag">Entity resolution</span>
+              <span class="tag">Research design</span>
+            </div>
+            <a class="text-link" href="https://yessicatorrest.github.io/thesis-results/" target="_blank" rel="noopener">Open the interactive app <span aria-hidden="true">↗</span></a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="additional-projects" id="additional">
+      <div class="container">
+        <div class="eyebrow">Additional work</div>
+        <h2 class="section-heading">Two more examples, kept deliberately compact.</h2>
+
+        <div class="small-project-grid">
+          <article class="small-project" data-reveal>
+            <div class="small-visual">
+              <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demand forecasting chart illustration">
+                <g font-family="DM Sans, sans-serif">
+                  <rect x="20" y="18" width="520" height="184" rx="18" fill="#FFFFFF" stroke="#DDE3EB"/>
+                  <line x1="64" y1="158" x2="506" y2="158" stroke="#DDE3EB"/>
+                  <line x1="64" y1="60" x2="64" y2="158" stroke="#DDE3EB"/>
+                  <path d="M68 141 C112 126, 126 132, 164 112 S230 90, 268 105 S330 130, 369 89 S430 55, 500 74" fill="none" stroke="#1B2B4B" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M68 149 C116 135, 132 119, 170 121 S228 104, 269 98 S334 112, 373 82 S437 67, 500 64" fill="none" stroke="#B8860B" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 7"/>
+                  <circle cx="369" cy="89" r="6" fill="#B8860B"/>
+                  <rect x="328" y="32" width="144" height="34" rx="17" fill="#F7EBCB"/>
+                  <text x="400" y="54" text-anchor="middle" fill="#1B2B4B" font-size="12" font-weight="800">83.5% weekly R²</text>
+                  <text x="78" y="187" fill="#68758A" font-size="10">actual fill rate</text>
+                  <line x1="64" y1="184" x2="72" y2="184" stroke="#1B2B4B" stroke-width="3"/>
+                  <text x="174" y="187" fill="#68758A" font-size="10">forecast</text>
+                  <line x1="150" y1="184" x2="162" y2="184" stroke="#B8860B" stroke-width="3" stroke-dasharray="5 4"/>
+                </g>
+              </svg>
+            </div>
+            <div class="small-copy">
+              <h3>Demand Forecasting for a Manufacturing Company</h3>
+              <div class="small-context">TUM School of Management, team of 5</div>
+              <p>Built an XGBoost forecasting approach for manufacturing demand, validated it with walk-forward testing and extended it with a discrete-event simulation that translated forecasts into machine and staffing requirements.</p>
+              <div class="tag-list">
+                <span class="tag">XGBoost</span>
+                <span class="tag">Time series</span>
+                <span class="tag">Python</span>
+                <span class="tag">Simulation</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="small-project" data-reveal>
+            <div class="small-visual">
+              <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rosie AI coach conversation illustration">
+                <g font-family="DM Sans, sans-serif">
+                  <rect x="50" y="28" width="460" height="164" rx="20" fill="#FFFFFF" stroke="#DDE3EB"/>
+                  <rect x="76" y="54" width="286" height="52" rx="16" fill="#F6F7F9"/>
+                  <text x="96" y="76" fill="#1B2B4B" font-size="12" font-weight="700">Where does AI fit in my process?</text>
+                  <text x="96" y="94" fill="#68758A" font-size="10">Business owner</text>
+                  <rect x="184" y="120" width="300" height="48" rx="16" fill="#1B2B4B"/>
+                  <text x="204" y="140" fill="#FFFFFF" font-size="11" font-weight="700">Let us map the current work first.</text>
+                  <text x="204" y="156" fill="#C9D2E0" font-size="10">Rosie</text>
+                  <circle cx="472" cy="54" r="20" fill="#F7EBCB" stroke="#B8860B"/>
+                  <text x="472" y="60" text-anchor="middle" fill="#1B2B4B" font-size="15" font-weight="800">R</text>
+                </g>
+              </svg>
+            </div>
+            <div class="small-copy">
+              <h3>Rosie, AI Coach for SMEs</h3>
+              <div class="small-context">BMWK-funded project, team of 3</div>
+              <p>Designed a guided chatbot that helps small businesses examine a specific process, identify realistic AI use cases and generate a preliminary business case. The product also addressed GDPR and trust directly instead of hiding them in the fine print.</p>
+              <div class="tag-list">
+                <span class="tag">LLM integration</span>
+                <span class="tag">Product requirements</span>
+                <span class="tag">GDPR</span>
+                <span class="tag">SME strategy</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="skill-block">
-        <div class="skill-block-label">Languages</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Spanish — Native</span>
-          <span class="skill-pill">English — Proficient</span>
-          <span class="skill-pill">German — B1</span>
+    </section>
+
+    <section class="experience-section" id="experience">
+      <div class="container">
+        <div class="eyebrow">Experience</div>
+        <h2 class="section-heading">Operational work that shaped how I approach the projects.</h2>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">August 2024 to present<div class="timeline-company">Celonis SE</div></div>
+            <div>
+              <h3 class="timeline-role">Academy Operations &amp; Technology Specialist</h3>
+              <p class="timeline-copy">I work at the intersection of learner operations, enterprise systems and data quality, supporting a global Academy environment across Salesforce, learning platforms and internal workflows. My role involves investigating recurring access and data issues, understanding where processes break across systems, and coordinating practical solutions with IT, vendors and internal teams. I also support the use of AI in learner service operations and translate feedback from customers, partners and employees into improvements to content, tools and processes.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">September 2022 to July 2024<div class="timeline-company">Celonis SE</div></div>
+            <div>
+              <h3 class="timeline-role">Global Talent Acquisition Enablement Specialist</h3>
+              <p class="timeline-copy">I managed global programmes and digital tools supporting Talent Acquisition teams across regions. I worked directly with recruiters, hiring managers, directors and external vendors to understand operational needs, resolve issues and improve the tools and processes they relied on. The role also involved maintaining shared knowledge structures, coordinating communications, reporting and financial processes, and bringing structure to work with many stakeholders and moving parts.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">March 2022 to August 2022<div class="timeline-company">Celonis SE</div></div>
+            <div>
+              <h3 class="timeline-role">Global Talent Acquisition Enablement Intern</h3>
+              <p class="timeline-copy">I supported the administration and rollout of several global platforms, working with user access, data maintenance, vendor communication and programme coordination. This was my first experience operating digital tools at global scale and showed me how seemingly small issues in data, documentation or ownership can create friction across an entire process. I later carried that systems-focused way of working into my specialist roles at Celonis.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">April 2009 to February 2015<div class="timeline-company">Grupo Vanguard</div></div>
+            <div>
+              <h3 class="timeline-role">HR Manager, promoted from Accounting Intern</h3>
+              <p class="timeline-copy">I progressed from an accounting internship into a broader role covering finance, payroll, tax, HR and compliance across several related companies. Working in a multi-entity environment taught me to understand how operational decisions affect financial records, employees and statutory obligations at the same time. It also developed the accuracy, discretion and sense of ownership that still shape how I approach complex systems and business processes today.</p>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<hr class="rule">
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="section-label">Selected Projects</div>
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-number">01 · Master's Thesis</div>
-      <div class="project-title">AI Maturity Index</div>
-      <div class="project-context">BCG × TUM Research Cluster, 2025–2026</div>
-      <p class="project-desc">Built a validated AI maturity index across 1,539 firms using NLP on corporate disclosures, combined with structured data from patent records, executive databases and M&A activity. The core challenge was not the modelling — it was making the pipeline defensible across five incompatible identifier systems.</p>
-      <div class="project-highlight">1,539 firms · NLP pipeline · Gradient-boosted trees · Fuzzy entity matching</div>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">NLP</span>
-        <span class="project-tag">Scikit-learn</span>
-        <span class="project-tag">Pandas</span>
-        <span class="project-tag">Financial Data</span>
-        <span class="project-tag">BCG × TUM</span>
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Interested in the work behind one of these projects?</h2>
+            <p>I am happy to share the research, prototypes or technical details that do not fit on this page.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:yesst09@gmail.com">Email me</a>
+            <a class="button button-secondary" href="https://linkedin.com/in/yessicatorres" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://github.com/yessicatorrest" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="project-card">
-      <div class="project-number">02 · Celonis · Operational Work</div>
-      <div class="project-title">Data Quality Dashboard</div>
-      <div class="project-context">Celonis SE — Academy Operations, 2024–2025</div>
-      <p class="project-desc">Built a process mining dashboard in Celonis to monitor data quality across a 100K+ user learning platform. Identified and resolved two critical use cases — duplicate accounts, missing attributes and incorrect access configurations — affecting 8,000+ learners and distorting downstream reporting metrics.</p>
-      <div class="project-highlight">8,000+ records cleaned · 100K+ user platform · LMS + Salesforce integration</div>
-      <div class="project-tags">
-        <span class="project-tag">Celonis</span>
-        <span class="project-tag">Process Mining</span>
-        <span class="project-tag">Salesforce</span>
-        <span class="project-tag">Data Quality</span>
-        <span class="project-tag">KPI Dashboards</span>
-      </div>
-    </div>
+  <footer>© 2026 Yessica Torres · yessicatorrest.github.io</footer>
 
-    <div class="project-card">
-      <div class="project-number">03 · Academic Project</div>
-      <div class="project-title">Demand Forecasting System</div>
-      <div class="project-context">TUM — Operations & Analytics Course</div>
-      <p class="project-desc">Built a predictive model in Python to forecast manufacturing order demand from business planning data. Translated an operational business problem into a data pipeline and model output that could support real decision-making — not just produce technically correct results.</p>
-      <div class="project-highlight">End-to-end Python pipeline · Business-to-model translation · Operational decision support</div>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Predictive Modelling</span>
-        <span class="project-tag">Pandas</span>
-        <span class="project-tag">NumPy</span>
-        <span class="project-tag">Scikit-learn</span>
-      </div>
-    </div>
+  <script>
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-    <div class="project-card">
-      <div class="project-number">04 · Academic Project</div>
-      <div class="project-title">AI Chatbot for SMEs</div>
-      <div class="project-context">TUM — No-Code / GDPR Focus</div>
-      <p class="project-desc">Designed and prototyped a no-code AI chatbot to improve SME AI adoption. Defined user journeys, wrote requirements, and mapped compliance considerations under GDPR — framing AI implementation not just as a technical problem but as a product and governance challenge.</p>
-      <div class="project-highlight">No-code implementation · GDPR compliance · User journey design · SME focus</div>
-      <div class="project-tags">
-        <span class="project-tag">No-Code AI</span>
-        <span class="project-tag">GDPR</span>
-        <span class="project-tag">User Journey Design</span>
-        <span class="project-tag">Requirements</span>
-      </div>
-    </div>
+    revealItems.forEach((item) => revealObserver.observe(item));
 
-  </div>
-</section>
+    const projectLinks = [...document.querySelectorAll('.project-nav a')];
+    const observedSections = projectLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
 
-<hr class="rule">
+    const projectObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="section-label">Experience</div>
-  <div class="timeline">
+      if (!visible) return;
+      projectLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+      });
+    }, { rootMargin: '-22% 0px -60% 0px', threshold: [0.05, 0.2, 0.5] });
 
-    <div class="timeline-item">
-      <div class="timeline-date">
-        08/2024 – Present
-        <div class="timeline-company">Celonis SE<br>Munich</div>
-      </div>
-      <div>
-        <div class="timeline-role">Academy Operations & Technology Specialist</div>
-        <div class="timeline-sub">Data Quality · Process Analytics · AI Integration</div>
-        <ul class="timeline-desc">
-          <li>Defined and monitored data quality KPIs across 900+ learner records; cleaned use cases affecting 8,000+ users with missing records and incorrect access.</li>
-          <li>Built Celonis dashboards to surface inefficiencies and enable prioritisation by measurable impact rather than urgency.</li>
-          <li>Contributed to AI agent integration — improving knowledge inputs to raise response quality across a 100K+ user platform.</li>
-          <li>Managed 4,600+ support tickets with a 4.3/5 average feedback score.</li>
-        </ul>
-      </div>
-    </div>
+    observedSections.forEach((section) => projectObserver.observe(section));
 
-    <div class="timeline-item">
-      <div class="timeline-date">
-        09/2022 – 07/2024
-        <div class="timeline-company">Celonis SE<br>Munich</div>
-      </div>
-      <div>
-        <div class="timeline-role">TA Enablement Specialist</div>
-        <div class="timeline-sub">Program Ownership · Tool Management · Reporting</div>
-        <ul class="timeline-desc">
-          <li>Took full ownership of the global employee referral program — drove campaigns, vendor management and payouts, scaling hire rate from 36% to 41%.</li>
-          <li>Managed talent tools including Greenhouse, HiPeople, Criteria and SocialTalent across the global TA function.</li>
-          <li>Built learning paths and produced bonus-linked completion reports for Global TA teams in SocialTalent.</li>
-          <li>Owned Confluence knowledge base for the global function.</li>
-        </ul>
-      </div>
-    </div>
+    const pageSections = [...document.querySelectorAll('main section[id]')];
+    const mainNavLinks = [...document.querySelectorAll('.nav-links a')];
+    const mainNavObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      mainNavLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${visible.target.id}`);
+      });
+    }, { rootMargin: '-25% 0px -65% 0px', threshold: 0.05 });
 
-    <div class="timeline-item">
-      <div class="timeline-date">
-        03/2022 – 08/2022
-        <div class="timeline-company">Celonis SE<br>Munich</div>
-      </div>
-      <div>
-        <div class="timeline-role">TA Enablement Intern</div>
-        <div class="timeline-sub">Tools Administration · Data Quality · Program Support</div>
-        <ul class="timeline-desc">
-          <li>Administered Greenhouse, HiPeople, Criteria and SocialTalent — managing access, user data and vendor coordination.</li>
-          <li>Supported global referral program rollout with data preparation and engagement coordination.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">
-        04/2009 – 02/2015
-        <div class="timeline-company">Grupo Vanguard<br>Barquisimeto, VE</div>
-      </div>
-      <div>
-        <div class="timeline-role">HR Manager</div>
-        <div class="timeline-sub">Promoted from Accounting Intern · 5 Legal Entities</div>
-        <ul class="timeline-desc">
-          <li>Managed accounting, payroll and tax operations across five legal entities in a complex multi-company environment.</li>
-          <li>Owned GL maintenance, audit preparation and intercompany reconciliations across all entities.</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="contact-label">Let's talk</div>
-    <h2 class="contact-heading">Open to opportunities<br>in Munich.</h2>
-    <p class="contact-sub">Looking for a full-time role in BizOps, analytics, or AI implementation starting October 2026. Happy to chat about roles where rigorous, defensible work is the standard.</p>
-    <div class="contact-links">
-      <a href="mailto:yessica.torres@tum.de" class="contact-link contact-link-primary">yessica.torres@tum.de</a>
-      <a href="https://linkedin.com/in/yessicatorres" target="_blank" class="contact-link contact-link-secondary">LinkedIn →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 Yessica Torres · yessicatorrest.github.io
-</footer>
-
+    pageSections.forEach((section) => mainNavObserver.observe(section));
+  </script>
 </body>
 </html>
