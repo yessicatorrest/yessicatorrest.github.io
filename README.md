@@ -10,4 +10,4 @@ Building things at the intersection of data, AI and operations.
 
 📫 yesst09@gmail.com
 
-🌐 yessicatorrest.github.io
+🌐 View my portfolio: https://yessicatorrest.github.io/
