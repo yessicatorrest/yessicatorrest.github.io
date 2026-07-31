@@ -490,11 +490,11 @@
 
     .media-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .media-grid.equal { grid-template-columns: 1fr 1fr; }
+    .media-grid.equal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .media-card {
       overflow: hidden;
@@ -532,7 +532,8 @@
 
     .media-slot {
       position: relative;
-      min-height: 330px;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
       display: grid;
       place-items: center;
       overflow: hidden;
@@ -541,23 +542,29 @@
         repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(27, 43, 75, 0.035) 30px);
     }
 
-    .media-grid.equal .media-slot { min-height: 300px; }
+    .media-grid.equal .media-slot { min-height: 0; }
 
     .media-slot img,
     .media-slot video {
       position: absolute;
       inset: 0;
       z-index: 2;
-      display: none;
+      display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      background: var(--mist);
+      object-fit: contain;
+      opacity: 0;
+      visibility: hidden;
+      background: var(--white);
+      transition: opacity 180ms ease;
     }
 
-    .media-slot video { object-fit: contain; }
+    .media-slot video { background: var(--mist); }
     .media-slot.has-media img,
-    .media-slot.has-media video { display: block; }
+    .media-slot.has-media video {
+      opacity: 1;
+      visibility: visible;
+    }
 
     .media-fallback {
       position: relative;
@@ -951,7 +958,10 @@
       .contact-card { padding: 30px; }
       .contact-actions { flex-direction: column; }
       .media-slot,
-      .media-grid.equal .media-slot { min-height: 250px; }
+      .media-grid.equal .media-slot {
+        aspect-ratio: 16 / 9;
+        min-height: 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1131,8 +1141,8 @@
                   <span class="browser-url">prototype walkthrough</span>
                 </div>
                 <div class="media-slot">
-                  <video controls playsinline preload="metadata" poster="assets/skillovna-demo-poster.jpg" onloadeddata="this.parentElement.classList.add('has-media')" onerror="this.remove()">
-                    <source src="assets/skillovna-demo.mp4" type="video/mp4">
+                  <video controls playsinline preload="metadata" poster="assets/skillovna-demo-poster.jpg" onloadedmetadata="this.parentElement.classList.add('has-media')" oncanplay="this.parentElement.classList.add('has-media')" onerror="this.parentElement.classList.add('media-error')">
+                    <source src="assets/skillovna-demo.mp4" type="video/mp4" onerror="this.parentElement.parentElement.classList.add('media-error')">
                   </video>
                   <div class="media-fallback">
                     <div class="media-fallback-icon">▶</div>
@@ -1677,7 +1687,7 @@
           </div>
           <div class="contact-actions">
             <a class="button button-primary" href="mailto:yesst09@gmail.com">Email me</a>
-            <a class="button button-secondary" href="https://linkedin.com/in/yessica-torres/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://linkedin.com/in/yessicatorres" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
             <a class="button button-secondary" href="https://github.com/yessicatorrest" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
