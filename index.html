@@ -42,7 +42,7 @@ img{max-width:100%;display:block}
 /* hero */
 .eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#5A463B;font-weight:600}
 .eyebrow::before{content:"";width:36px;height:1px;background:var(--brown)}
-.hero{display:grid;grid-template-columns:1fr 460px;gap:64px;align-items:center;padding:36px 0 64px}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;padding:36px 0 64px}
 .hero h1{margin:24px 0 24px;font-size:clamp(42px,6vw,76px);line-height:1;font-weight:700;letter-spacing:-.045em}
 .role{font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);line-height:1.15;font-weight:500;color:var(--mauve);min-height:1.2em;margin-bottom:24px}
 .caret{display:inline-block;width:2px;height:.85em;background:var(--mauve);margin-left:4px;vertical-align:-.05em;animation:blink 1s steps(1) infinite}
@@ -303,8 +303,21 @@ dialog[open]{animation:pop .3s cubic-bezier(.2,.8,.2,1)}
       </div>
       <div class="photo">
         <div class="blob" aria-hidden="true"></div>
-        <img src="assets/photo.jpg" alt="Portrait of Yessica Torres" width="656" height="684">
-        <div class="note" aria-hidden="true">Turning complexity into something practical.</div>
+        <!-- Decorative lines -->
+        <span class="line line-left"
+              aria-hidden="true"></span>
+        <span class="line line-right"
+              aria-hidden="true"></span>
+
+        <!-- Portrait -->
+        <img src="assets/photo.jpg"
+             alt="Portrait of Yessica Torres"
+             width="656" height="684">
+
+        <!-- Handwritten note -->
+        <div class="note" aria-hidden="true">
+          Turning complexity into something practical.
+        </div>
       </div>
     </header>
     <a class="scroll" href="#work">Scroll to explore <span aria-hidden="true">↓</span></a>
