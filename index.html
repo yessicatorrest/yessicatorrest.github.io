@@ -397,6 +397,25 @@ dialog[open]{animation:pop .3s cubic-bezier(.2,.8,.2,1)}
   color: var(--brown);
 }
 
+/* Skillovna YouTube video embed */
+
+.skill-video-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #171717;
+  margin-top: 14px;
+}
+
+.skill-video-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 @media (max-width: 640px) {
   .skill-pdf {
     height: 360px;
@@ -999,14 +1018,28 @@ if (p.skillovnaPhases) {
           the platform accessible to students.
         </p>
 
-        <h4>The final project video</h4>
+        
+<h4>The final project video</h4>
 
-        <video controls playsinline preload="metadata"
-               class="skill-video">
-          <source src="assets/skillovna-career-video.mp4"
-                  type="video/mp4">
-          Your browser does not support HTML video.
-        </video>
+<div class="skill-video-embed">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/vfIxZP_qNXA"
+    title="Skillovna — Career Discovery Project Video"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="skill-file-link">
+  <a href="https://www.youtube.com/watch?v=vfIxZP_qNXA"
+     target="_blank"
+     rel="noopener noreferrer">
+    Watch on YouTube ↗
+  </a>
+</p>
+
 
         <h4>Impact Entrepreneurship presentation</h4>
 
@@ -1049,6 +1082,7 @@ if (p.skillovnaPhases) {
 }
 function closeModal(){modal.close();}
 
+
 /* Switch between Skillovna project phases */
 
 document.getElementById("m-body")
@@ -1071,10 +1105,40 @@ document.getElementById("m-body")
 
     document.getElementById("skill-career").hidden =
       phase !== "career";
+
+    /* Stop YouTube playback when leaving Phase 02 */
+    var iframe = document.querySelector(
+      ".skill-video-embed iframe"
+    );
+
+    if (iframe) {
+      if (phase !== "career") {
+        iframe.removeAttribute("src");
+      } else if (!iframe.getAttribute("src")) {
+        iframe.src =
+          "https://www.youtube-nocookie.com/embed/vfIxZP_qNXA";
+      }
+    }
   });
 document.getElementById("m-close").addEventListener("click",closeModal);
 modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
-modal.addEventListener("close",function(){document.documentElement.style.overflow="";if(lastBtn)lastBtn.focus();});
+
+modal.addEventListener("close", function() {
+  document.documentElement.style.overflow = "";
+
+  /* Stop the embedded Skillovna video */
+  var iframe = modal.querySelector(
+    ".skill-video-embed iframe"
+  );
+
+  if (iframe) {
+    iframe.removeAttribute("src");
+  }
+
+  if (lastBtn) {
+    lastBtn.focus();
+  }
+});
 
 document.querySelectorAll("[data-proj]").forEach(function(el){
   el.addEventListener("click",function(){
