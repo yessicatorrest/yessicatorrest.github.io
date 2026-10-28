@@ -168,6 +168,58 @@ img{max-width:100%;display:block}
 .item h3{margin:0;font-family:var(--serif);font-size:30px;line-height:1.15;font-weight:600}
 .item .sub{margin:2px 0 10px;font-size:14px;font-weight:500;color:var(--brown)}
 .item p{margin:0;color:var(--soft);font-size:15px}
+  
+/* Earlier experience expandable section */
+
+.earlier {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.earlier summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.earlier summary::-webkit-details-marker {
+  display: none;
+}
+
+.earlier summary:hover {
+  color: var(--brown);
+}
+
+.earlier-arrow {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--brown);
+  transition: transform .2s ease;
+}
+
+.earlier details[open] .earlier-arrow {
+  transform: rotate(45deg);
+}
+
+.earlier-content {
+  padding: 0 0 24px;
+  max-width: 760px;
+}
+
+.earlier-content p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--soft);
+}
 .lead{max-width:760px;margin:0 auto 30px;text-align:center;font-family:var(--serif);font-size:34px;line-height:1.15;font-weight:500}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .box{padding:24px;background:var(--bg);border:1px solid var(--line);border-radius:14px}
@@ -331,14 +383,116 @@ dialog[open]{animation:pop .3s cubic-bezier(.2,.8,.2,1)}
         <div class="more"><div class="eyebrow">Explore the collection</div><h3>More projects</h3><div id="more"></div></div>
       </div>
 
-      <div class="panel" role="tabpanel" id="p-experience" aria-labelledby="t-experience" hidden>
-        <div class="tl">
-          <div class="item"><div class="when">Aug 2024 – Sep 2026</div><div><h3>Academy Operations &amp; Technology Specialist</h3><div class="sub">Celonis SE</div><p>I work at the intersection of learner operations, enterprise systems and data quality, supporting a global Academy environment across Salesforce, learning platforms and internal workflows. My role involves investigating recurring access and data issues, understanding where processes break across systems, and coordinating practical solutions with IT, vendors and internal teams. I also support the use of AI in learner service operations and translate feedback from customers, partners and employees into improvements to content, tools and processes.</p></div></div>
-          <div class="item"><div class="when">Sep 2022 – Jul 2024</div><div><h3>Global Talent Acquisition Enablement Specialist</h3><div class="sub">Celonis SE</div><p>I managed global programmes and digital tools supporting Talent Acquisition teams across regions. I worked directly with recruiters, hiring managers, directors and external vendors to understand operational needs, resolve issues and improve the tools and processes they relied on. The role also involved maintaining shared knowledge structures, coordinating communications, reporting and financial processes, and bringing structure to work with many stakeholders and moving parts.</p></div></div>
-          <div class="item"><div class="when">Mar 2022 – Aug 2022</div><div><h3>Global Talent Acquisition Enablement Intern</h3><div class="sub">Celonis SE</div><p>I supported the administration and rollout of several global platforms, working with user access, data maintenance, vendor communication and programme coordination. This was my first experience operating digital tools at global scale and showed me how seemingly small issues in data, documentation or ownership can create friction across an entire process.</p></div></div>
-          <div class="item"><div class="when">Apr 2009 – Feb 2015</div><div><h3>Accounting, Payroll &amp; Tax Operations</h3><div class="sub">Grupo Vanguard</div><p>I progressed from an accounting internship into a broader role covering finance, payroll, tax, HR and compliance across several related companies. Working in a multi-entity environment taught me to understand how operational decisions affect financial records, employees and statutory obligations at the same time.</p></div></div>
-        </div>
+      
+<!-- EXPERIENCE -->
+<div class="panel" role="tabpanel"
+     id="p-experience"
+     aria-labelledby="t-experience" hidden>
+
+  <div class="tl">
+
+    <!-- Academy Operations & Technology -->
+    <div class="item">
+      <div class="when">Aug 2024 – Sep 2026</div>
+      <div>
+        <h3>Academy Operations &amp; Technology Specialist</h3>
+        <div class="sub">Celonis SE</div>
+
+        <p>
+          I worked on improving data quality, enterprise
+          workflows and AI-enabled operations across the
+          Celonis Academy. One of my main projects involved
+          defining KPIs and building dashboards to identify
+          and prioritise recurring data issues across seven
+          use cases. I also developed automated solutions
+          using Celonis workflows and AI agents, reducing
+          the resolution time for recurring discrepancies
+          from several days to approximately 30 minutes.
+          Alongside this, I investigated LMS–Salesforce
+          integration issues, collaborated with IT and
+          vendors on system improvements, and helped
+          improve AI-enabled learner support through
+          better knowledge inputs and workflows.
+        </p>
       </div>
+    </div>
+
+    <!-- Global TA Enablement Specialist -->
+    <div class="item">
+      <div class="when">Sep 2022 – Jul 2024</div>
+      <div>
+        <h3>Global Talent Acquisition Enablement Specialist</h3>
+        <div class="sub">Celonis SE</div>
+
+        <p>
+          I managed global enablement programmes,
+          digital tools and processes supporting Talent
+          Acquisition teams across regions. A major part
+          of my role was taking ownership of the employee
+          referral programme, coordinating its operations,
+          vendor platform, communications and campaigns
+          with senior TA leadership. These initiatives
+          helped increase the referral hire rate to 41%.
+          I also developed learning paths and reporting
+          for global teams, worked with vendors on
+          platform improvements, and maintained shared
+          documentation and knowledge structures in
+          Confluence.
+        </p>
+      </div>
+    </div>
+
+    <!-- Global TA Enablement Internship -->
+    <div class="item">
+      <div class="when">Mar 2022 – Aug 2022</div>
+      <div>
+        <h3>Global Talent Acquisition Enablement Intern</h3>
+        <div class="sub">Celonis SE</div>
+
+        <p>
+          I supported the administration and rollout
+          of global recruiting and learning platforms,
+          including Greenhouse, HiPeople, Criteria and
+          SocialTalent. My work involved managing user
+          access and platform data, coordinating with
+          vendors and internal teams, and supporting
+          programme implementation. It was an
+          introduction to working with enterprise
+          systems and understanding how processes,
+          data and people connect across global teams.
+        </p>
+      </div>
+    </div>
+
+    <!-- Earlier Experience -->
+    <div class="earlier">
+      <details>
+        <summary>
+          <span>Earlier experience in finance &amp; accounting</span>
+          <span class="earlier-arrow" aria-hidden="true">+</span>
+        </summary>
+
+        <div class="earlier-content">
+          <p>
+            Before moving into business technology and
+            analytics, I worked in accounting and financial
+            operations across several organisations.
+            My responsibilities included financial reporting,
+            multi-entity accounting, general ledger and
+            intercompany reconciliations, payroll, tax
+            documentation and audit preparation. This
+            experience gave me a practical understanding
+            of financial processes, data accuracy and
+            operational controls.
+          </p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+<!-- END EXPERIENCE -->
+
 
       <div class="panel" role="tabpanel" id="p-education" aria-labelledby="t-education" hidden>
         <div class="tl">
