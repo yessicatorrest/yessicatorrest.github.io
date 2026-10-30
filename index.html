@@ -397,6 +397,121 @@ dialog[open]{animation:pop .3s cubic-bezier(.2,.8,.2,1)}
   color: var(--brown);
 }
 
+
+/* Skillovna structured case study */
+
+.skill-section {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.skill-section h4 {
+  margin: 0 0 10px;
+}
+
+.skill-section p {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+
+.skill-actions {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 9px;
+  color: var(--soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.skill-flow {
+  align-items: center;
+}
+
+.skill-flow i {
+  font-style: normal;
+  color: var(--brown);
+}
+
+.skill-explain {
+  margin-top: 12px !important;
+  font-size: 14px !important;
+}
+
+/* Collapsible supporting materials */
+
+.skill-materials {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.skill-materials summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 19px 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.skill-materials summary::-webkit-details-marker {
+  display: none;
+}
+
+.skill-materials summary span:last-child {
+  font-size: 22px;
+  color: var(--brown);
+  font-weight: 400;
+  transition: transform .2s;
+}
+
+.skill-materials[open] summary span:last-child {
+  transform: rotate(45deg);
+}
+
+.skill-media-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.skill-media-tab {
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--soft);
+  font: 500 12px var(--sans);
+  cursor: pointer;
+}
+
+.skill-media-tab[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+.skill-media-tab:hover {
+  border-color: var(--brown);
+}
+
+.skill-media-panel {
+  min-width: 0;
+  padding-bottom: 18px;
+}
+
+.skill-media-panel .skill-image,
+.skill-media-panel .skill-pdf,
+.skill-media-panel .skill-video-embed {
+  margin-top: 0;
+}
+
 /* Skillovna YouTube video embed */
 
 .skill-video-embed {
@@ -736,11 +851,12 @@ var PROJECTS = [
 
   lead:"We first built Skillovna to help SMEs identify employee skill gaps and development needs. In a second university course, we adapted the same assessment technology to explore a different challenge: helping A-level students discover vocational career paths. Two courses, two problems, one engine.",
 
-  facts:[
-    ["Phase 01","SME upskilling · Team of 2"],
-    ["Phase 02","Career discovery · Team of 4"],
-    ["My contribution","Problem framing, research, product development and automation"]
-  ],
+facts:[
+  ["Context","Two TUM entrepreneurship courses · 2024–2025"],
+  ["My role","Problem framing, research, product development and automation"],
+  ["Deliverable","AI skill assessment adapted for SME upskilling and career discovery"]
+],
+
 
   skillovnaPhases:true,
 
@@ -865,34 +981,30 @@ function openProject(i,btn){
   var p=PROJECTS[i]; lastBtn=btn;
   var h='<div class="m-kick">'+esc(p.n+" · "+p.kicker)+'</div><h2 class="m-title" id="m-title">'+esc(p.title)+'</h2><p class="m-lead">'+esc(p.lead)+'</p>';
   h+='<div class="facts">'+p.facts.map(function(f){return '<div class="fact"><b>'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>';}).join("")+'</div>';
-  
+
 /* Skillovna: two courses, one project */
 if (p.skillovnaPhases) {
 
   h += `
     <div class="skillovna-project">
 
+      <!-- Course selector -->
       <div class="skill-tabs" role="group"
            aria-label="Skillovna project phases">
 
-        <button type="button"
-                class="skill-tab active"
-                data-skill-phase="sme"
-                aria-pressed="true">
+        <button type="button" class="skill-tab active"
+                data-skill-phase="sme" aria-pressed="true">
           01 · SME upskilling
         </button>
 
-        <button type="button"
-                class="skill-tab"
-                data-skill-phase="career"
-                aria-pressed="false">
+        <button type="button" class="skill-tab"
+                data-skill-phase="career" aria-pressed="false">
           02 · Career discovery
         </button>
-
       </div>
 
       <!-- PHASE 01 -->
-      <div class="skill-phase" id="skill-sme">
+      <section class="skill-phase" id="skill-sme">
 
         <p class="skill-kicker">
           ENTREPRENEURIAL PROTOTYPING · 2024 · TEAM OF 2
@@ -900,85 +1012,124 @@ if (p.skillovnaPhases) {
 
         <h3>Starting with SME upskilling</h3>
 
-        <p>
-          The project began with a problem I had seen
-          through my experience with learning platforms:
-          smaller companies often lack the resources to
-          offer structured employee development.
-          We wanted to explore whether an AI-powered
-          assessment could help identify skill gaps and
-          provide a clearer starting point for learning.
-        </p>
-
-        <h4>From research to prototype</h4>
-
-        <p>
-          We combined interviews, AI-generated personas,
-          surveys and early prototype feedback to understand
-          the problem and test our assumptions.
-          We then developed an assessment covering seven
-          skill areas and built an automated workflow to
-          process the answers and display personalised results.
-          We refined the landing page, assessment and results
-          experience through several iterations.
-        </p>
-
-        <h4>The automation behind it</h4>
-
-        <div class="skill-flow">
-          <span>Tally</span>
-          <span>Airtable</span>
-          <span>Make</span>
-          <span>ChatGPT</span>
-          <span>JSON parsing</span>
-          <span>Results dashboard</span>
+        <div class="skill-section">
+          <h4>01 · The problem</h4>
+          <p>
+            Smaller companies often lack the resources
+            to offer structured employee development,
+            leaving employees to find suitable training
+            on their own. Drawing on my experience
+            with learning platforms, I wanted to explore
+            whether an AI-powered assessment could
+            provide a better starting point.
+          </p>
         </div>
 
-        <p>
-          The assessment collected user responses through
-          Tally, stored them in Airtable and processed them
-          through Make and ChatGPT. The results were returned
-          in a structured format and made available through
-          the prototype's dashboard.
-        </p>
+        <div class="skill-section">
+          <h4>02 · What we did</h4>
+          <ul class="skill-actions">
+            <li>
+              Researched the problem through interviews,
+              AI-generated personas and two surveys.
+            </li>
+            <li>
+              Built a seven-area skill assessment and an
+              automated workflow for personalised results.
+            </li>
+            <li>
+              Refined the landing page, assessment and
+              results experience through prototype feedback.
+            </li>
+          </ul>
+        </div>
 
-        <h4>What we learned</h4>
+        <div class="skill-section">
+          <h4>03 · How it fits together</h4>
 
-        <p>
-          Feedback helped us improve the user experience,
-          but it also challenged our business assumptions.
-          Our market sizing, pricing and differentiation
-          needed more work, and the problem risked being
-          a nice-to-have rather than a strong purchasing
-          priority for SMEs.
-        </p>
+          <div class="skill-flow" aria-label="Assessment workflow">
+            <span>Tally</span>
+            <i aria-hidden="true">→</i>
+            <span>Airtable</span>
+            <i aria-hidden="true">→</i>
+            <span>Make</span>
+            <i aria-hidden="true">→</i>
+            <span>ChatGPT</span>
+            <i aria-hidden="true">→</i>
+            <span>Results</span>
+          </div>
 
-        <h4>Explore the first prototype</h4>
+          <p class="skill-explain">
+            Make coordinated the assessment workflow,
+            including AI processing, JSON parsing and
+            saving structured results back to Airtable
+            for display in the prototype.
+          </p>
+        </div>
 
-        <img class="skill-image"
-             src="assets/skillovna-landing.png"
-             alt="Skillovna SME upskilling prototype landing page"
-             loading="lazy">
+        <div class="skill-section">
+          <h4>04 · What changed / what we learned</h4>
+          <p>
+            Testing improved the user experience, but
+            feedback also challenged our market sizing,
+            pricing and differentiation. We had built
+            a working assessment, but still needed a
+            stronger reason for SMEs to buy it.
+          </p>
+        </div>
 
-        <h4>SME pitch presentation</h4>
+        <!-- Supporting materials -->
+        <details class="skill-materials">
+          <summary>
+            <span>Explore supporting materials</span>
+            <span aria-hidden="true">+</span>
+          </summary>
 
-        <iframe class="skill-pdf"
-                src="assets/skillovna-sme-pitch.pdf"
-                title="Skillovna SME pitch presentation"
-                loading="lazy">
-        </iframe>
+          <div class="skill-media-tabs" role="group"
+               aria-label="SME project materials">
 
-        <p class="skill-file-link">
-          <a href="assets/skillovna-sme-pitch.pdf"
-             target="_blank" rel="noopener">
-            Open presentation in a new tab ↗
-          </a>
-        </p>
+            <button type="button" class="skill-media-tab"
+                    data-skill-media="prototype"
+                    aria-pressed="true">
+              Prototype
+            </button>
 
-      </div>
+            <button type="button" class="skill-media-tab"
+                    data-skill-media="pitch"
+                    aria-pressed="false">
+              SME pitch slides
+            </button>
+          </div>
+
+          <div class="skill-media-panel"
+               data-skill-media-panel="prototype">
+
+            <img class="skill-image"
+                 src="assets/skillovna-landing.png"
+                 alt="Skillovna SME prototype landing page"
+                 loading="lazy">
+          </div>
+
+          <div class="skill-media-panel"
+               data-skill-media-panel="pitch" hidden>
+
+            <iframe class="skill-pdf"
+                    src="assets/skillovna-sme-pitch.pdf"
+                    title="Skillovna SME pitch presentation"
+                    loading="lazy">
+            </iframe>
+
+            <p class="skill-file-link">
+              <a href="assets/skillovna-sme-pitch.pdf"
+                 target="_blank" rel="noopener">
+                Open full presentation ↗
+              </a>
+            </p>
+          </div>
+        </details>
+      </section>
 
       <!-- PHASE 02 -->
-      <div class="skill-phase" id="skill-career" hidden>
+      <section class="skill-phase" id="skill-career" hidden>
 
         <p class="skill-kicker">
           IMPACT ENTREPRENEURSHIP · 2025 · TEAM OF 4
@@ -986,81 +1137,137 @@ if (p.skillovnaPhases) {
 
         <h3>Reframing Skillovna for career discovery</h3>
 
-        <p>
-          In our next course, we explored Germany's skilled
-          worker shortage and why vocational training is
-          often overlooked by A-level students. Rather than
-          starting from zero, we reused the assessment
-          concept and adapted Skillovna to help students
-          explore their strengths and discover vocational
-          career opportunities.
-        </p>
+        <div class="skill-section">
+          <h4>01 · The problem</h4>
+          <p>
+            Germany faces a shortage of skilled workers,
+            yet many A-level students overlook vocational
+            training as a career option. We explored how
+            to make these opportunities more visible
+            and help students discover paths that fit
+            their interests and strengths.
+          </p>
+        </div>
 
-        <h4>What changed</h4>
+        <div class="skill-section">
+          <h4>02 · What we did</h4>
+          <ul class="skill-actions">
+            <li>
+              Used systems thinking and stakeholder
+              mapping to reframe the problem.
+            </li>
+            <li>
+              Adapted Skillovna with career assessments,
+              apprenticeship opportunities and success stories.
+            </li>
+            <li>
+              Refined the prototype using feedback and
+              developed an impact-oriented business model.
+            </li>
+          </ul>
+        </div>
 
-        <p>
-          The new concept combined personalised career
-          insights with apprenticeship opportunities and
-          real-world success stories. We revised the
-          prototype, improved its navigation based on
-          feedback and explored how students, schools
-          and companies would interact with the platform.
-        </p>
+        <div class="skill-section">
+          <h4>03 · How it fits together</h4>
 
-        <h4>Thinking about impact</h4>
+          <div class="skill-flow" aria-label="Career discovery concept">
+            <span>Student</span>
+            <i aria-hidden="true">→</i>
+            <span>Assessment</span>
+            <i aria-hidden="true">→</i>
+            <span>Career exploration</span>
+            <i aria-hidden="true">→</i>
+            <span>Apprenticeship options</span>
+          </div>
 
-        <p>
-          We used systems thinking, stakeholder mapping
-          and an impact logic model to explore the wider
-          problem. We also developed an impact business
-          model, with apprenticeship providers as the
-          proposed main paying customers while keeping
-          the platform accessible to students.
-        </p>
+          <p class="skill-explain">
+            The adapted concept combined personalised
+            career insights with vocational opportunities
+            and success stories. Students were the intended
+            users, while apprenticeship providers were
+            the proposed primary paying customers.
+          </p>
+        </div>
 
-        
-<h4>The final project video</h4>
+        <div class="skill-section">
+          <h4>04 · What changed / what we learned</h4>
+          <p>
+            Feedback led us to simplify the navigation
+            and clarify the platform's value proposition.
+            The second course also pushed us to think
+            beyond the prototype and consider how
+            students, schools and employers would use it.
+          </p>
+        </div>
 
-<div class="skill-video-embed">
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/vfIxZP_qNXA"
-    title="Skillovna — Career Discovery Project Video"
-    loading="lazy"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
-</div>
+        <!-- Supporting materials -->
+        <details class="skill-materials">
+          <summary>
+            <span>Explore supporting materials</span>
+            <span aria-hidden="true">+</span>
+          </summary>
 
-<p class="skill-file-link">
-  <a href="https://www.youtube.com/watch?v=vfIxZP_qNXA"
-     target="_blank"
-     rel="noopener noreferrer">
-    Watch on YouTube ↗
-  </a>
-</p>
+          <div class="skill-media-tabs" role="group"
+               aria-label="Career discovery materials">
 
+            <button type="button" class="skill-media-tab"
+                    data-skill-media="video"
+                    aria-pressed="true">
+              Project video
+            </button>
 
-        <h4>Impact Entrepreneurship presentation</h4>
+            <button type="button" class="skill-media-tab"
+                    data-skill-media="impact"
+                    aria-pressed="false">
+              Impact pitch slides
+            </button>
+          </div>
 
-        <iframe class="skill-pdf"
-                src="assets/skillovna-impact-pitch.pdf"
-                title="Skillovna Impact Entrepreneurship presentation"
-                loading="lazy">
-        </iframe>
+          <div class="skill-media-panel"
+               data-skill-media-panel="video">
 
-        <p class="skill-file-link">
-          <a href="assets/skillovna-impact-pitch.pdf"
-             target="_blank" rel="noopener">
-            Open presentation in a new tab ↗
-          </a>
-        </p>
+            <div class="skill-video-embed">
+              <iframe
+                data-src="https://www.youtube-nocookie.com/embed/vfIxZP_qNXA"
+                title="Skillovna Career Discovery Project Video"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
 
-      </div>
+            <p class="skill-file-link">
+              <a href="https://www.youtube.com/watch?v=vfIxZP_qNXA"
+                 target="_blank" rel="noopener noreferrer">
+                Watch on YouTube ↗
+              </a>
+            </p>
+          </div>
+
+          <div class="skill-media-panel"
+               data-skill-media-panel="impact" hidden>
+
+            <iframe class="skill-pdf"
+                    src="assets/skillovna-impact-pitch.pdf"
+                    title="Skillovna Career Discovery presentation"
+                    loading="lazy">
+            </iframe>
+
+            <p class="skill-file-link">
+              <a href="assets/skillovna-impact-pitch.pdf"
+                 target="_blank" rel="noopener">
+                Open full presentation ↗
+              </a>
+            </p>
+          </div>
+        </details>
+      </section>
 
     </div>
   `;
 }
+  
   if(p.blocks&&p.blocks.length){
     h+='<div class="blocks">'+p.blocks.map(function(b){
       var x='<div><h4>'+esc(b.h)+'</h4>';
@@ -1083,43 +1290,83 @@ if (p.skillovnaPhases) {
 function closeModal(){modal.close();}
 
 
-/* Switch between Skillovna project phases */
 
-document.getElementById("m-body")
-  .addEventListener("click", function(e) {
+/* Skillovna phase and media navigation */
 
-    var tab = e.target.closest("[data-skill-phase]");
-    if (!tab) return;
+function syncSkillVideo() {
+  var iframe = body.querySelector(".skill-video-embed iframe");
+  if (!iframe) return;
 
-    var phase = tab.dataset.skillPhase;
+  var phase = iframe.closest(".skill-phase");
+  var panel = iframe.closest(".skill-media-panel");
+  var materials = iframe.closest(".skill-materials");
 
-    document.querySelectorAll(".skill-tab")
-      .forEach(function(btn) {
-        var active = btn.dataset.skillPhase === phase;
-        btn.classList.toggle("active", active);
-        btn.setAttribute("aria-pressed", String(active));
-      });
+  var visible =
+    !phase.hidden &&
+    !panel.hidden &&
+    materials.open;
 
-    document.getElementById("skill-sme").hidden =
-      phase !== "sme";
+  if (visible && !iframe.getAttribute("src")) {
+    iframe.src = iframe.dataset.src;
+  } else if (!visible && iframe.getAttribute("src")) {
+    iframe.removeAttribute("src");
+  }
+}
 
-    document.getElementById("skill-career").hidden =
-      phase !== "career";
+body.addEventListener("click", function(e) {
 
-    /* Stop YouTube playback when leaving Phase 02 */
-    var iframe = document.querySelector(
-      ".skill-video-embed iframe"
+  /* Phase 01 / Phase 02 */
+  var phaseButton = e.target.closest("[data-skill-phase]");
+
+  if (phaseButton) {
+    var phase = phaseButton.dataset.skillPhase;
+
+    body.querySelectorAll(".skill-tab").forEach(function(btn) {
+      var active = btn.dataset.skillPhase === phase;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+
+    body.querySelector("#skill-sme").hidden = phase !== "sme";
+    body.querySelector("#skill-career").hidden = phase !== "career";
+
+    syncSkillVideo();
+    return;
+  }
+
+  /* Supporting-material tabs */
+  var mediaButton = e.target.closest("[data-skill-media]");
+
+  if (mediaButton) {
+    var section = mediaButton.closest(".skill-phase");
+    var selected = mediaButton.dataset.skillMedia;
+
+    section.querySelectorAll("[data-skill-media]").forEach(
+      function(btn) {
+        btn.setAttribute(
+          "aria-pressed",
+          String(btn.dataset.skillMedia === selected)
+        );
+      }
     );
 
-    if (iframe) {
-      if (phase !== "career") {
-        iframe.removeAttribute("src");
-      } else if (!iframe.getAttribute("src")) {
-        iframe.src =
-          "https://www.youtube-nocookie.com/embed/vfIxZP_qNXA";
+    section.querySelectorAll("[data-skill-media-panel]").forEach(
+      function(panel) {
+        panel.hidden = panel.dataset.skillMediaPanel !== selected;
       }
-    }
-  });
+    );
+
+    syncSkillVideo();
+  }
+});
+
+/* Opening or closing supporting materials */
+body.addEventListener("toggle", function(e) {
+  if (e.target.matches(".skill-materials")) {
+    syncSkillVideo();
+  }
+}, true);
+
 document.getElementById("m-close").addEventListener("click",closeModal);
 modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});
 
